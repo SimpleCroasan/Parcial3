@@ -7,4 +7,5 @@ urlpatterns=[
     path('nuevo/',crearNota.as_view(),name="view" ),
     path('editar/<int:pk>',views.UpdateNota.as_view(),name="editar" ),
     path('nota/<int:nota_id>/', views.verNotas, name='nota'),
+    path('borrar/<int:pk>',views.deleteNota.as_view(),name="borrar" ),
 ]

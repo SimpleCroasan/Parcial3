@@ -49,4 +49,10 @@ def verNotas(request, nota_id):
 
 
 class deleteNota(DeleteView):
+    template_name ='borrar.html'
+    model= Nota
+    
+    def get_success_url(self):
+        return reverse_lazy('main')
+    
     

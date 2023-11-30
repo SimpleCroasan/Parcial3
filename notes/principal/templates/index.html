@@ -61,7 +61,13 @@
 
             let button3 = document.createElement("button");
             button3.innerText = "Borrar ";
+            button3.onclick = function () {
+
+                redirigirNota3(notaId);
+            };
+
             c3.appendChild(button3);
+
 
 
             function redirigirNota(notaId) {
@@ -75,6 +81,14 @@
             function redirigirNota2(notaId) {
 
                 let url = `/nota/${notaId}`;
+
+
+                window.location.href = url;
+            }
+
+            function redirigirNota3(notaId) {
+
+                let url = `/borrar/${notaId}`;
 
 
                 window.location.href = url;

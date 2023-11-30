@@ -11,7 +11,10 @@
 
     <h1>Borrar nota</h1>
 
-    <form method="post">{{}}
+    <form method="post">{% csrf_token %}
+        <p>¿estas seguro?</p>
+        {{form}}
+        <input type="submit" value="confirmar">
 
 
     </form>
