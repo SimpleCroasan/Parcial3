@@ -1,22 +1,24 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
 
 <body>
-    <h1>Nota</h1>
 
-    <h2>Titulo: {{nota.titulo}}</h2>
+    <h1>Nueva nota:</h1>
+    <form method="post">{% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Guardar">
 
-    <h2>Fecha: {{nota.fecha}}</h2>
 
-    <h3>Contenido: {{nota.contenido}}</h3>
+
+    </form>
+
+
 
 </body>
 
