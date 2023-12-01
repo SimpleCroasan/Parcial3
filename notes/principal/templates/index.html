@@ -23,12 +23,22 @@
             cursor: pointer;
         }
 
+        .login {
+
+            margin-left: 86%;
+        }
+
+        .nuevo {
+
+            margin-left: 10%;
+        }
+
         .clase {
             background-color: blue;
         }
 
         .clase2 {
-            background-color: yellow;
+            background-color: orange;
         }
 
         .clase3 {
@@ -41,7 +51,8 @@
             border-collapse: collapse;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid black;
             padding: 8px;
             text-align: left;
@@ -51,13 +62,17 @@
             background-color: lightblue;
         }
     </style>
-</head>
+    </head>
 
-</head>
+    </head>
     <h1>app de notas</h1>
-    <button onclick="window.location.href='{% url 'view' %}'">Loginx    </button> </button>
+    {% if user.is_authenticated %}
+    <button onclick="window.location.href='{% url 'logout' %}'" class="login">Salir </button> </button>
+    {% else %}
+    <button onclick="window.location.href='{% url 'login' %}'" class="login">Ingresar </button> </button>
+    {% endif %}
     <br>
-    <button onclick="window.location.href='{% url 'view' %}'"> Nueva nota </button>
+    <button onclick="window.location.href='{% url 'view' %}'" class="nuevo"> Nueva nota </button>
 
     <table id="tabla">
         <tr>

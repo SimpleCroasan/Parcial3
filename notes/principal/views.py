@@ -1,14 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse    
 from .models import Nota
-from .models import *
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView
 from django.views.generic.edit import DeleteView
 import datetime
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
+from django.contrib import messages
 from django.urls import reverse_lazy
+from django.template import loader
+from django.shortcuts import redirect
+from .forms import NewUserForm
+
 # Create your views here.
 def lista(request):
     title = Nota.objects.all()
@@ -17,15 +21,6 @@ def lista(request):
 
     })
 
-
-def register(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            username= form.cleaned_data["username"]
-            message.success(request, )
-
-    return render(request, 'register.html', context)
 
 
 class crearNota(CreateView):
@@ -66,3 +61,16 @@ class deleteNota(DeleteView):
         return reverse_lazy('main')
     
     
+def registro(request):
+    if request.method == "POST":
+        form = NewUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request,user)
+            messages.success(request, "Registro Exitoso")
+            return redirect('main')
+        messages.error(request,"No fue posible el Registro. Información Invalida")
+    form = NewUserForm()
+    context = {"register_form":form}
+    template = loader.get_template("register.html") 
+    return HttpResponse(template.render(context,request))
