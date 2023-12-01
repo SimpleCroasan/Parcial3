@@ -8,7 +8,55 @@
 </head>
 
 <body>
+    <style>
+        h1 {
+            color: blue;
+            text-align: center;
+        }
+
+        button {
+            background-color: blue;
+            color: white;
+            margin: 5px;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .clase {
+            background-color: blue;
+        }
+
+        .clase2 {
+            background-color: yellow;
+        }
+
+        .clase3 {
+            background-color: red;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+</head>
     <h1>app de notas</h1>
+    <button onclick="window.location.href='{% url 'view' %}'">Loginx    </button> </button>
+    <br>
     <button onclick="window.location.href='{% url 'view' %}'"> Nueva nota </button>
 
     <table id="tabla">
@@ -41,6 +89,7 @@
 
             let button = document.createElement("button");
             button.innerText = "ver ";
+            button.className = "clase"
             c3.appendChild(button);
             button.onclick = function () {
 
@@ -52,6 +101,8 @@
 
             let button2 = document.createElement("button");
             button2.innerText = "editar ";
+            button2.className = "clase2"
+
             button2.onclick = function () {
 
                 redirigirNota(notaId);
@@ -61,6 +112,7 @@
 
             let button3 = document.createElement("button");
             button3.innerText = "Borrar ";
+            button3.className = "clase3"
             button3.onclick = function () {
 
                 redirigirNota3(notaId);

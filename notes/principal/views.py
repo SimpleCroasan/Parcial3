@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse    
 from .models import Nota
+from .models import *
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView
 from django.views.generic.edit import DeleteView
 import datetime
+from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 # Create your views here.
 def lista(request):
@@ -16,6 +18,14 @@ def lista(request):
     })
 
 
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            username= form.cleaned_data["username"]
+            message.success(request, )
+
+    return render(request, 'register.html', context)
 
 
 class crearNota(CreateView):
